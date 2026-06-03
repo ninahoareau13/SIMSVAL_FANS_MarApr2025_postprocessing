@@ -57,12 +57,17 @@ addpath('/path/to/cmocean/');   % optional
 ## Raw data
 
 The raw `.rsk` files (RBR binary format) are **not distributed in this repository** due to file size.  
-They are archived at PANGAEA: **doi:10.1594/PANGAEA.XXXXXXX** *(DOI to be assigned)*
+They are available on Zenodo (restricted access — contact nhoareau@icm.csic.es):
+
+| Archive | Contents | Size |
+|---------|----------|------|
+| `raw_SIMSVAL_rsk.zip` | SIMSVAL .rsk files (stations A, B, B1_val, C, I) | ~8 MB |
+| `raw_FANS_rsk.zip` | FANS .rsk files (ICM-CSIC 16 Hz, S/N 237957) | ~16 MB |
 
 Download the `.rsk` files and place them in:
 ```
 scripts/RAW/raw_SIMSVAL/    ← SIMSVAL .rsk files (stations A, B, B1_val, C, I)
-scripts/RAW/raw_FANS/       ← FANS .rsk files (ICM 16 Hz + PONANT 2 Hz)
+scripts/RAW/raw_FANS/       ← FANS .rsk files (ICM 16 Hz)
 ```
 
 ---
@@ -141,16 +146,19 @@ run('proc_run_CTD_concat_oceancasts_NetCDF_export.m')
 
 | Step | Operation | Notes |
 |------|-----------|-------|
-| 1 | Sea pressure = Pressure − Patm | Patm from FerryBox hourly means |
-| 2 | A/D hold correction (`RSKcorrecthold`) | 16 Hz only |
-| 3 | Despiking (`RSKdespike`) | 4σ, window 15 pts, direction *down* |
-| 4 | C/T lag correction (`RSKalignchannel`) | 16 Hz only, cap ±2 scans |
-| 5 | Smoothing (`RSKsmooth`) | window 5 pts |
-| 6 | Depth + velocity derivation | |
-| 7 | Soak removal (`RSKtrim_soak`) | fixed_time 20 s (5 s for 1A_1 and 7H_4) |
-| 8 | Loop removal (`RSKremoveloops`) | threshold 0.1 m/s |
-| 9 | Salinity + σ-θ derivation | TEOS-10 GSW |
-| 10 | QC flags (`apply_QC_tests`) | 7 tests, SeaDataNet L20 |
+| 1 | Data reading | `RSKopen` + `RSKreadprofiles` (downcast only). Channel `Temperature1` renamed to `Temperature` for the 2 Hz PONANT sensor (station C). |
+| 2 | Sea pressure = Pressure − Patm | Patm from FerryBox hourly means, nearest-neighbour interpolation |
+| 3 | A/D hold correction (`RSKcorrecthold`) | 16 Hz only |
+| 4 | Despiking (`RSKdespike`) | 4σ, window 15 pts, direction *down*, action `nan` |
+| 5 | C/T lag correction (`RSKcalculateCTlag` + `RSKalignchannel`) | 16 Hz only, `seapressurerange = [5 30]`, cap ±2 scans |
+| 6 | Smoothing (`RSKsmooth`) | window 5 pts, applied to temperature and conductivity |
+| 7 | Depth + velocity derivation | `RSKderivedepth` + `RSKderivevelocity` |
+| 8 | Soak removal (`RSKtrim_soak`) | fixed_time 20 s (5 s for 1A_1 and 7H_4) |
+| 9 | Loop removal (`RSKremoveloops`) | threshold 0.1 m/s |
+| 10 | Salinity + σ-θ derivation | `RSKderivesalinity` + `gsw_sigma0` (TEOS-10 GSW) |
+| 11 | QC flags (`apply_QC_tests`) | 7 tests, SeaDataNet L20 flags |
+
+> **Vertical-gradient test note:** The QARTOD/Argo vertical-gradient test (test 5) is **not applied** to native-resolution data. At a typical descent velocity of ~0.3 m s⁻¹, the pressure interval between consecutive 16 Hz samples is ~0.003 dbar, which amplifies gradient noise ~80× compared with 0.25 dbar binned data. This test is reserved for bin-averaged products.
 
 ---
 
@@ -162,6 +170,27 @@ run('proc_run_CTD_concat_oceancasts_NetCDF_export.m')
 | `PROC_CTD_ARICE_2025_Greenland_oceanCasts.nc` | L2 | 73 | Processed + QC |
 
 Both follow **CF-1.8 / ACDD-1.3** conventions, `featureType = "profile"`, 2D NaN-padded `(obs × profile)`.
+
+### Dimensions (`PROC_CTD_ARICE_2025_Greenland_oceanCasts.nc`)
+
+| Dimension | Size | Description |
+|-----------|-----:|-------------|
+| `profile` | 73 | One element per CTD profile |
+| `obs` | 6623 | Maximum number of samples per profile (NaN-padded); native resolution |
+| `name_strlen` | 6 | Maximum length of station identifiers |
+| `campaign_strlen` | 7 | Maximum length of campaign names (`SIMSVAL` = 7 characters) |
+
+### Key variables
+
+**Coordinate variables** — per profile: `time`, `latitude`, `longitude`, `station_id`, `campaign`
+
+**Coordinate variables** — per sample `(obs, profile)`: `sea_pressure`, `depth`, `sample_time`
+
+**Oceanographic variables** — `(obs, profile)`: `temperature`, `salinity`, `conductivity`, `sigma_theta`, `profile_velocity`
+
+**QC flags** — `(obs, profile)`, int8, SeaDataNet L20: `temperature_qc`, `salinity_qc`, `conductivity_qc`, `sigma_theta_qc`, `sea_pressure_qc`
+
+**Auxiliary per-profile variables**: `n_samples`, `max_sea_pressure`, `sampling_frequency`, `sss` (AutoSal surface salinity, complementary reference only), soak metadata (`soak_duration`, `soak_depth`, `soak_n_filtered`), FerryBox atmospheric variables
 
 ---
 
