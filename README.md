@@ -1,5 +1,8 @@
 # SIMSVAL & FANS Mar–Apr 2025 — CTD Post-Processing Pipeline
 
+[![DOI code](https://img.shields.io/badge/DOI%20code-10.5281%2Fzenodo.20527364-blue)](https://doi.org/10.5281/zenodo.20527364)
+[![DOI data](https://img.shields.io/badge/DOI%20data-10.5281%2Fzenodo.20489479-blue)](https://doi.org/10.5281/zenodo.20489479)
+
 MATLAB pipeline for post-processing CTD data from **RBR Concerto** sensors deployed during the **ARICE-PONANT 2025** spring campaigns (*SIMSVAL* and *FANS*) aboard R/V *Le Commandant Charcot* in western Greenland fjords (60.2–69.5°N).
 
 This code produces the datasets published in:
