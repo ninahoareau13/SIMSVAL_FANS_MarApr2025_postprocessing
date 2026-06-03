@@ -224,7 +224,7 @@ MIT — see [LICENSE](LICENSE)
 If you use this code, please cite:
 
 ```bibtex
-@software{umbert2026_ctd_pipeline,
+@software{hoareau2026_ctd_pipeline,
   author    = {Hoareau, Nina and Umbert, Marta and Crespin, Júlia and
                Sánchez Urrea, María and Hernández-Macià, Ferran and
                Gabarró, Carolina and De Andrés, Eva},
