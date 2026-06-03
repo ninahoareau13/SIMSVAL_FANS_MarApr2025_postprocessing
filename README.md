@@ -57,7 +57,7 @@ addpath('/path/to/cmocean/');   % optional
 ## Raw data
 
 The raw `.rsk` files (RBR binary format) are **not distributed in this repository** due to file size.  
-They are available on Zenodo (restricted access — contact nhoareau@icm.csic.es):
+They are available on Zenodo ([doi:10.5281/zenodo.20489479](https://doi.org/10.5281/zenodo.20489479), restricted access — contact nhoareau@icm.csic.es):
 
 | Archive | Contents | Size |
 |---------|----------|------|
@@ -116,7 +116,7 @@ run('raw_concat_SIMSVAL_matfile.m')
 % Step 1b — Extract raw FANS profiles from .rsk files
 run('raw_concat_FANS_matfile.m')
 
-% Step 2 — Combine and export → RAW_ARICE-2025_Greenland_CTD.nc
+% Step 2 — Combine and export → SIMSVAL_FANS_MarApr2025_RAW.nc
 run('raw_run_CTD_concat_oceancasts_NetCDF_export.m')
 ```
 
@@ -136,7 +136,7 @@ run('proc_concat_SIMSVAL_matfile.m')
 % Step 2b — Concatenate FANS → PROC_CTD_FANS_oceanCasts.mat
 run('proc_concat_FANS_matfile.m')
 
-% Step 3 — Combine and export → PROC_CTD_ARICE_2025_Greenland_oceanCasts.nc
+% Step 3 — Combine and export → SIMSVAL_FANS_MarApr2025_PROC.nc
 run('proc_run_CTD_concat_oceancasts_NetCDF_export.m')
 ```
 
@@ -166,12 +166,12 @@ run('proc_run_CTD_concat_oceancasts_NetCDF_export.m')
 
 | File | Level | Profiles | Description |
 |------|-------|----------|-------------|
-| `RAW_ARICE-2025_Greenland_CTD.nc` | L0 | 80 | Raw data, no processing |
-| `PROC_CTD_ARICE_2025_Greenland_oceanCasts.nc` | L2 | 73 | Processed + QC |
+| `SIMSVAL_FANS_MarApr2025_RAW.nc` | L0 | 80 | Raw data, no processing |
+| `SIMSVAL_FANS_MarApr2025_PROC.nc` | L2 | 73 | Processed + QC |
 
 Both follow **CF-1.8 / ACDD-1.3** conventions, `featureType = "profile"`, 2D NaN-padded `(obs × profile)`.
 
-### Dimensions (`PROC_CTD_ARICE_2025_Greenland_oceanCasts.nc`)
+### Dimensions (`SIMSVAL_FANS_MarApr2025_PROC.nc`)
 
 | Dimension | Size | Description |
 |-----------|-----:|-------------|
@@ -200,6 +200,14 @@ Nina Hoareau, Maria Sánchez, Júlia Crespin, Eva De-Andrés, Ferran Hernández-
 
 Institut de Ciències del Mar (ICM-CSIC), Barcelona, Spain — nhoareau@icm.csic.es
 
+**Groups:** [Barcelona Polar Lab](https://www.barcelonapolarlab.es) · Servicio de Ingeniería Oceanográfica — ICM-CSIC
+
+---
+
+## Acknowledgements
+
+This work was supported by the Spanish Ministry of Science through the "Severo Ochoa Centre of Excellence" accreditation awarded to ICM-CSIC (CEX2024-001494-S).
+
 ---
 
 ## License
@@ -222,6 +230,6 @@ If you use this code, please cite:
   year      = {2025},
   version   = {1.0.0},
   publisher = {Zenodo},
-  doi       = {10.5281/zenodo.XXXXXXX}
+  doi       = {10.5281/zenodo.20489479}
 }
 ```

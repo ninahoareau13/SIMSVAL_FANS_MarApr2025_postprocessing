@@ -11,7 +11,7 @@ abstract: >
 authors:
   - family-names: Hoareau
     given-names: Nina
-    orcid: "https://orcid.org/0000-0002-5512-5740"
+    orcid: "https://orcid.org/0000-0002-4796-8735"
     affiliation: "Institut de Ciències del Mar (ICM-CSIC), Barcelona, Spain"
     email: nhoareau@icm.csic.es
   - family-names: Sánchez
@@ -33,8 +33,9 @@ authors:
     given-names: Marta
     affiliation: "Institut de Ciències del Mar (ICM-CSIC), Barcelona, Spain"
 version: "1.0.0"
-date-released: "2025-06-01"
+date-released: "2026-06-01"
 license: MIT
+doi: "10.5281/zenodo.20489479"
 repository-code: "https://github.com/ninahoareau13/SIMSVAL_FANS_MarApr2025_postprocessing"
 keywords:
   - CTD

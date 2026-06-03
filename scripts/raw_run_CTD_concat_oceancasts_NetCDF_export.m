@@ -38,7 +38,7 @@
 %     wind_direction        — wind direction (degrees)
 %     relative_humidity     — relative humidity (%)
 %
-% Output: RAW_ARICE-2025_Greenland_CTD.nc
+% Output: SIMSVAL_FANS_MarApr2025_RAW.nc
 %
 % NOTE ON PROCESSING LEVEL:
 %   These data are L0: no processing has been applied. The data contain
@@ -57,7 +57,7 @@ close all
 out_path = '../outputs/';
 matfile_S = [out_path 'RAW_CTD_SIMSVAL_oceanCasts.mat'];
 matfile_F = [out_path 'RAW_CTD_FANS_oceanCasts.mat'];
-ncfile    = [out_path 'RAW_ARICE-2025_Greenland_CTD.nc'];
+ncfile    = [out_path 'SIMSVAL_FANS_MarApr2025_RAW.nc'];
 
 disp(' ')
 disp('╔════════════════════════════════════════════════════════════════════╗')

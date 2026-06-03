@@ -30,7 +30,7 @@ addpath('/home/nina/Escritorio/WORK/Programs/MATLAB_toolbox/cmocean/');
 
 % Output files
 matfile = '../outputs/PROC_CTD_ARICE_2025_Greenland_oceanCasts.mat';
-ncfile  = '../outputs/PROC_CTD_ARICE_2025_Greenland_oceanCasts.nc';
+ncfile  = '../outputs/SIMSVAL_FANS_MarApr2025_PROC.nc';
 
 %% ════════════════════════════════════════════════════════════════════════
 %  STEP 1: Concatenation of CTD data (SIMSVAL + FANS)
@@ -169,6 +169,6 @@ disp('  Processing level:')
 disp('    - L2: Post-processed with automated QC (no delayed-mode validation)')
 disp(' ')
 disp('  Next steps:')
-disp('    - CF validation: cfchecks PROC_CTD_ARICE_2025_Greenland_oceanCasts.nc')
-disp('    - Inspection: ncdisp(''PROC_CTD_ARICE_2025_Greenland_oceanCasts.nc'')')
+disp('    - CF validation: cfchecks SIMSVAL_FANS_MarApr2025_PROC.nc')
+disp('    - Inspection: ncdisp(''SIMSVAL_FANS_MarApr2025_PROC.nc'')')
 disp('════════════════════════════════════════════════════════════════════')
