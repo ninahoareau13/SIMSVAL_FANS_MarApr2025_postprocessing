@@ -35,7 +35,7 @@ authors:
 version: "1.0.0"
 date-released: "2026-06-01"
 license: MIT
-doi: "10.5281/zenodo.20489479"
+doi: "10.5281/zenodo.20527364"
 repository-code: "https://github.com/Barcelona-Polar-Lab/SIMSVAL_FANS_MarApr2025_postprocessing"
 keywords:
   - CTD

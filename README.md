@@ -16,7 +16,7 @@ This code produces the datasets published in:
 | Campaigns | SIMSVAL (Mar–Apr 2025) + FANS (Apr 2025) |
 | Sensors | RBR Concerto³ 16 Hz (ICM-CSIC, S/N 237957) + RBR Concerto 2 Hz (PONANT) |
 | L2 profiles | 73 (32 SIMSVAL + 41 FANS) |
-| L0 profiles | 80 |
+| L0 profiles | 73 |
 
 ---
 
@@ -166,7 +166,7 @@ run('proc_run_CTD_concat_oceancasts_NetCDF_export.m')
 
 | File | Level | Profiles | Description |
 |------|-------|----------|-------------|
-| `SIMSVAL_FANS_MarApr2025_RAW.nc` | L0 | 80 | Raw data, no processing |
+| `SIMSVAL_FANS_MarApr2025_RAW.nc` | L0 | 73 | Raw data, atmospheric pressure correction only |
 | `SIMSVAL_FANS_MarApr2025_PROC.nc` | L2 | 73 | Processed + QC |
 
 Both follow **CF-1.8 / ACDD-1.3** conventions, `featureType = "profile"`, 2D NaN-padded `(obs × profile)`.
@@ -230,6 +230,6 @@ If you use this code, please cite:
   year      = {2025},
   version   = {1.0.0},
   publisher = {Zenodo},
-  doi       = {10.5281/zenodo.20489479}
+  doi       = {10.5281/zenodo.20527364}
 }
 ```
