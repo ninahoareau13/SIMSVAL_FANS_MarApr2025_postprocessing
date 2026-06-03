@@ -196,7 +196,7 @@ Both follow **CF-1.8 / ACDD-1.3** conventions, `featureType = "profile"`, 2D NaN
 
 ## Authors
 
-Nina Hoareau, Maria Sánchez, Júlia Crespin, Eva De-Andrés, Ferran Hernández-Macià, Carolina Gabarró, Marta Umbert
+Nina Hoareau, Marta Umbert, Júlia Crespin, María Sánchez Urrea, Ferran Hernández-Macià, Carolina Gabarró, Eva De Andrés
 
 Institut de Ciències del Mar (ICM-CSIC), Barcelona, Spain — nhoareau@icm.csic.es
 
@@ -222,9 +222,9 @@ If you use this code, please cite:
 
 ```bibtex
 @software{hoareau2025_ctd_pipeline,
-  author    = {Hoareau, Nina and Sánchez, Maria and Crespin, Júlia and
-               De-Andrés, Eva and Hernández-Macià, Ferran and
-               Gabarró, Carolina and Umbert, Marta},
+  author    = {Hoareau, Nina and Umbert, Marta and Crespin, Júlia and
+               Sánchez Urrea, María and Hernández-Macià, Ferran and
+               Gabarró, Carolina and De Andrés, Eva},
   title     = {SIMSVAL and FANS Mar-Apr 2025 — CTD post-processing pipeline
                for RBR Concerto sensors},
   year      = {2025},
