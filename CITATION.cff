@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 type: software
-title: "ARICE 2025 CTD post-processing pipeline for RBR Concerto sensors"
+title: "SIMSVAL and FANS Mar-Apr 2025 — CTD post-processing pipeline for RBR Concerto sensors"
 abstract: >
   MATLAB pipeline for post-processing CTD data from RBR Concerto sensors
   deployed during the ARICE-PONANT 2025 spring campaigns (SIMSVAL and FANS)
@@ -35,7 +35,7 @@ authors:
 version: "1.0.0"
 date-released: "2025-06-01"
 license: MIT
-repository-code: "https://github.com/ninahoareau13/ARICE2025-CTD-postprocessing"
+repository-code: "https://github.com/ninahoareau13/SIMSVAL_FANS_MarApr2025_postprocessing"
 keywords:
   - CTD
   - oceanography
